@@ -22,7 +22,6 @@ public:
     std::unique_ptr<open3d::visualization::Visualizer> visualizer;
     ICPVisualization(const std::string& window_name, int width, int height);
     ~ICPVisualization();
-    void close();
     void setPointClouds(const pcd_type &source, const pcd_type &target);
     void updateCurrentPointCloud(const pcd_type &current);
     void saveFrame(int iteration);

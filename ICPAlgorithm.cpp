@@ -76,21 +76,20 @@ void ICPAlgorithm::updateCurrent(const ICPAlgorithm::pcd_type &current_ptr) {
 // Main ICP method. If callback is provided, visualizer window will open
 void ICPAlgorithm::align(ICPAlgorithm::UpdateCallback callback){
     auto current_ptr = std::make_shared<open3d::geometry::PointCloud>(*source_ptr);
-    setColors(current_ptr, Color::BLUE);
+    setColors(current_ptr, Color::YELLOW);
 
     auto neighbours_ptr = std::make_shared<open3d::geometry::PointCloud>(*target_ptr);
-    int iteration = 0;
+    int iteration = 1;
     double last_rmse = 0;
 
     while (iteration < max_iterations){
+        if (callback){
+            callback(current_ptr,iteration);
+        }
         computeCorrespondences(current_ptr, neighbours_ptr);
         registerPoints(neighbours_ptr);
         updateCurrent(current_ptr);
         double rmse = computeRMSE(current_ptr);
-
-        if (callback){
-            callback(current_ptr,iteration);
-        }
         if (std::abs(rmse - last_rmse) < 1e-7){
             break;
         }

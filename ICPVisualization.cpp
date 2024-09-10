@@ -28,7 +28,6 @@ void ICPVisualization::updateCurrentPointCloud(const ICPVisualization::pcd_type 
     }
     current_ptr = current;
     visualizer->UpdateGeometry(current_ptr);
-
 }
 
 void ICPVisualization::saveFrame(int iteration) {
@@ -37,11 +36,8 @@ void ICPVisualization::saveFrame(int iteration) {
     std::cout << "Saved Frame: " << filename << "\n";
 }
 
-void ICPVisualization::close(){
-    visualizer->DestroyVisualizerWindow();
-}
 void ICPVisualization::run(ICPAlgorithm &icp) {
-    icp.align([this](const pcd_type& current, int iteration){
+    icp.align([&](const pcd_type& current, int iteration){
         updateCurrentPointCloud(current);
         visualizer->PollEvents();
         visualizer->UpdateRender();

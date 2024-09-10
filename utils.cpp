@@ -24,12 +24,21 @@ void transformPointCloud(const pcd_type &pcd, Eigen::Matrix4d &Pose){
 Eigen::Vector3d getColorVector(Color color){
     switch(color){
         case Color::RED:
-            return {1,0,0};
+            return {0.5,0,0};
         case Color::BLUE:
             return {0,0,1};
         case Color::GREEN:
             return {0,1,0};
         case Color::YELLOW:
             return {1,1,0};
+
+        case Color::DARK_RED:
+            return {0.545,0,0};
+        case Color::DARK_GREEN:
+            return {0,0.392,0};
+        case Color::DARK_BLUE:
+            return {0,0,0.545};
+        case Color::NAVY:
+            return {0,0,0.502};
     }
 }

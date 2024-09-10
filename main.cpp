@@ -15,7 +15,7 @@ int main(){
     open3d::io::ReadPointCloud(sourcepath, source);
     auto source_ptr = std::make_shared<open3d::geometry::PointCloud>(source);
     pcd_type target_ptr;
-    setColors(source_ptr,Color::YELLOW);
+    setColors(source_ptr,Color::NAVY);
 
     if(!debug) {
         std::string targetpath = "/Users/dsechs/Downloads/kitchen/Rf4.pcd";
@@ -24,7 +24,7 @@ int main(){
     }else{
     // Transform the source_ptr by a known R,T for testing
         Eigen::Matrix4d test_pose = Eigen::Matrix4d::Identity();
-        Eigen::Vector3d axis = {1, 0, 0};
+        Eigen::Vector3d axis = {0, 0, 1};
         double angle = M_PI/3.0;
 
         auto rot = Eigen::AngleAxisd(angle, axis).toRotationMatrix();
@@ -48,7 +48,7 @@ int main(){
 
     std::string file_prefix = "frame_";
     std::string save_path = "/Users/dsechs/Library/CloudStorage/OneDrive-UCSanDiego/Desktop/Cpp/pointclouds/frames/";
-    ICPVisualization vis("ICP Visualization", 1200,800);
+    ICPVisualization vis("ICP Visualization", 1600,1200);
     vis.setSavePath(save_path);
     vis.setFilePrefix(file_prefix);
     vis.setPointClouds(source_ptr,target_ptr);

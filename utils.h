@@ -14,7 +14,12 @@ enum class Color{
     RED,
     GREEN,
     BLUE,
-    YELLOW
+    YELLOW,
+    DARK_RED,
+    DARK_GREEN,
+    DARK_BLUE,
+    NAVY
+
 };
 Eigen::Vector3d mean(const pcd_type &pcd);
 void setColors(const pcd_type &pcd, Color color);
