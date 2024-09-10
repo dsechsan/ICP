@@ -7,6 +7,16 @@
 #include "open3d/Open3D.h"
 #include "utils.h"
 
+/**
+ * @brief The main function for running the ICP (Iterative Closest Point) visualization and alignment.
+ *
+ * This function initializes the source and target point clouds, sets up the ICP algorithm,
+ * and runs the visualization with the specified settings. The target can either be a transformed
+ * version of the source for testing (debug mode) or a separate point cloud file.
+ * If only pose is needed, icp.align() should get you the answer.
+ *
+ * @return int Returns 0 upon successful execution.
+ */
 int main(){
     bool debug = true;
 
