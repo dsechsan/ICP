@@ -73,6 +73,7 @@ void ICPAlgorithm::updateCurrent(const ICPAlgorithm::pcd_type &current_ptr) {
     }
 }
 
+// Main ICP method. If callback is provided, visualizer window will open
 void ICPAlgorithm::align(ICPAlgorithm::UpdateCallback callback){
     auto current_ptr = std::make_shared<open3d::geometry::PointCloud>(*source_ptr);
     setColors(current_ptr, Color::BLUE);
@@ -98,34 +99,7 @@ void ICPAlgorithm::align(ICPAlgorithm::UpdateCallback callback){
     }
 }
 
-//bool ICPAlgorithm::updateICP(open3d::visualization::Visualizer* visualizer, const ICPAlgorithm::pcd_type &current_ptr,
-//                             const ICPAlgorithm::pcd_type &neighbours_ptr,
-//                             Eigen::Matrix4d &Pose, double &last_rmse, int &iteration) {
-//
-//
-//
-//    computeCorrespondences(current_ptr, neighbours_ptr);
-//    registerPoints(neighbours_ptr, Pose);
-//    updateCurrent(current_ptr,Pose);
-//
-//    visualizer->UpdateGeometry(current_ptr);
-//    std::string filename = save_path_+ file_prefix_ + std::to_string(iteration) + ".png";
-//    visualizer->CaptureScreenImage(filename);
-//    std::cout << "Saved " << filename << std::endl;
-//
-//    double rmse = computeRMSE(current_ptr);
-//    std::cout << "Iteration " << iteration++ << " RMSE: " << rmse << std::endl;
-//
-//    if (std::abs(rmse - last_rmse) < 1e-8) {
-//        std::cout << "Converged with RMSE difference: " << std::abs(rmse - last_rmse) << std::endl;
-//        visualizer->Close();
-//        return false;
-//    }
-//    last_rmse = rmse;
-//
-//    return true;
-//}
-
+//Setters and Getters
 void ICPAlgorithm::setSource(const pcd_type &source) {
     source_ptr = source;
 }
