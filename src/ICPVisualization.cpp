@@ -13,7 +13,7 @@
 ICPVisualization::ICPVisualization(const std::string &window_name, int width, int height) :
     visualizer(std::make_unique<open3d::visualization::Visualizer>()) {
     visualizer->CreateVisualizerWindow(window_name, width, height);
-    visualizer->GetRenderOption().background_color_ = Eigen::Vector3d(0.8,0.8,0.8);
+    visualizer->GetRenderOption().background_color_ = Eigen::Vector3d(0.9,0.96,1);
 }
 
 /**
