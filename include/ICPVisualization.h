@@ -25,10 +25,7 @@ public:
     void setPointClouds(const pcd_type &source, const pcd_type &target);
     void updateCurrentPointCloud(const pcd_type &current);
     void saveFrame(int iteration);
-//    void registerAnimationCallback(ICPAlgorithm& icp);
     void run(ICPAlgorithm& icp);
-
-
     void setSavePath(std::string& save_path_);
     void setFilePrefix(std::string& file_prefix_);
 
