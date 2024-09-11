@@ -35,10 +35,10 @@ int main(){
     // Transform the source_ptr by a known R,T for testing
         Eigen::Matrix4d test_pose = Eigen::Matrix4d::Identity();
         Eigen::Vector3d axis = {0, 0, 1};
-        double angle = M_PI/3.0;
+        double angle = M_PI/6.0;
 
         auto rot = Eigen::AngleAxisd(angle, axis).toRotationMatrix();
-        auto trans = Eigen::Vector3d(0, 0, 0);
+        auto trans = Eigen::Vector3d(0, 0.5, 0.3);
 
         Eigen::Matrix4d target_pose = Eigen::Matrix4d::Identity();
         target_pose.block<3, 3>(0, 0) = rot;
@@ -54,7 +54,7 @@ int main(){
     Eigen::Matrix4d pose_init = Eigen::Matrix4d::Identity();
     ICPAlgorithm icp(source_ptr,target_ptr);
     icp.setPose(pose_init);
-    icp.setMaxIterations(50);
+    icp.setMaxIterations(100);
 
     std::string file_prefix = "frame_";
     std::string save_path = "/Users/dsechs/Library/CloudStorage/OneDrive-UCSanDiego/Desktop/Cpp/pointclouds/frames/";

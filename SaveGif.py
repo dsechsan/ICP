@@ -2,10 +2,10 @@ from PIL import Image, ImageDraw, ImageFont
 import imageio
 import os
 import re
+import argparse
 
 # Configuration settings
 input_folder = "/Users/dsechs/Library/CloudStorage/OneDrive-UCSanDiego/Desktop/Cpp/pointclouds/frames/"
-output_gif_path = "output60.gif"
 
 # Font paths and settings
 font_path = "/System/Library/Fonts/Supplemental/Microsoft Sans Serif.ttf"
@@ -45,11 +45,11 @@ def add_text_to_image(image_path, iter_text, title, source, target, current):
         font_legend = ImageFont.load_default()
 
     # Positions for text
-    iter_text_position = (200, 300)
-    title_text_position = (550, 30)
-    legend_source_pos = (230, 400)
-    legend_target_pos = (230, 475)
-    legend_current_pos = (230, 550)
+    iter_text_position = (100, 300)
+    title_text_position = (550, 500)
+    legend_source_pos = (130, 400)
+    legend_target_pos = (130, 475)
+    legend_current_pos = (130, 550)
 
     # Draw text on the image
     draw.text(iter_text_position, iter_text, font=font_iter, fill=font_color_iter)
@@ -114,7 +114,20 @@ def main():
     """
     Main function to run the GIF creation process.
     """
-    create_gif(input_folder, output_gif_path)
+    parser = argparse.ArgumentParser(description="Create a GIF from annotated images.")
+    parser.add_argument(
+        "-i", "--input_folder", type=str, default="./frames", 
+        help="Path to the folder containing input images."
+    )
+    parser.add_argument(
+        "-o", "--output_gif_path", type=str, required=True,
+        help="Path to save the output GIF."
+    )
+    
+    args = parser.parse_args()
+
+    # Run the GIF creation with provided paths
+    create_gif(args.input_folder, args.output_gif_path)
 
 
 if __name__ == "__main__":
