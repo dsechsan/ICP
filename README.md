@@ -34,6 +34,11 @@ However, the algorithm struggles when:
 *  initial guess is significantly inaccurate.
 
 ### Examples
+<div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <img src="https://github.com/dsechsan/ICP/blob/a04801b078473514e1eca94ac2062b86da6d35a5/gifs/output-30z.gif" alt="-30° around z-axis" style="width: 150px; height: auto; margin-right: 20px;">
+    <p>** 30° around Z-axis**  
+    </p>
+</div>
 <img src="https://github.com/dsechsan/ICP/blob/a04801b078473514e1eca94ac2062b86da6d35a5/gifs/output-30z.gif" width="49%" alt="-30° around z-axis" style="margin-right: 10px;"> 
 <img src="https://github.com/dsechsan/ICP/blob/a04801b078473514e1eca94ac2062b86da6d35a5/gifs/output60.gif" width="49%" alt="60° around z-axis">
 <img src="https://github.com/dsechsan/ICP/blob/a04801b078473514e1eca94ac2062b86da6d35a5/gifs/outputyt1.gif" width="49%" alt="1m along y axis">
